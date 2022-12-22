@@ -29,10 +29,16 @@ for pulse in data.keys():
         average_run.append(time_avg)
     
     data[pulse]["average_run"] = average_run
-    
 distances = [0.10, 0.40, 0.70, 1.0]
 
-data_frame = pd.DataFrame(data, index = distances)
+# construct new data for table
+table_data = {
+    "Pulse Min t(s)" : data["pulse_min"]["average_run"],
+    "Pulse Mid t(s)" : data["pulse_mid"]["average_run"],
+    "Pulse Max t(s)" : data["pulse_max"]["average_run"]
+}
+
+data_frame = pd.DataFrame(table_data, index = distances)
 
 print (data_frame)
 
