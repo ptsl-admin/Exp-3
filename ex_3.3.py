@@ -52,8 +52,8 @@ print(json.dumps(data, indent=4))
 data_table = {
     "Car":[1,2],
     "Pulse Min dt[s]": [data[1]["pulse_min"]["average_time"][0],data[2]["pulse_min"]["average_time"][0]],
-    "pulse Mid dt[s]":[data[1]["pulse_mid"]["average_time"][0],data[2]["pulse_mid"]["average_time"][0]],    
-    "pulse Max dt[s]": [data[1]["pulse_max"]["average_time"][0],data[2]["pulse_max"]["average_time"][0]],
+    "Pulse Mid dt[s]":[data[1]["pulse_mid"]["average_time"][0],data[2]["pulse_mid"]["average_time"][0]],    
+    "Pulse Max dt[s]": [data[1]["pulse_max"]["average_time"][0],data[2]["pulse_max"]["average_time"][0]],
 }
 print ("\n\n Experiment Data Table: \n Determining the time for calculating the instantaneous velocity:\n", "-"*65 , "\n")
 print(tabulate(data_table, headers="keys", tablefmt="grid"))
@@ -76,10 +76,10 @@ for item in data_table.items():
     momentum = round(MASS_CART_1 * velocity,3)
     kinetic_energy = round(0.5 * MASS_CART_1 * velocity**2,3)
 
-    key = item[0].replace("dt[s]","")
+    key = item[0].replace(" dt[s]","")
     data_table_calculations_cart1[key] = [velocity, momentum, kinetic_energy]
 
-print ("\n\n Calculation of velocity v, momentum p and kinetic energy Ekin by pulse min. pulse mid and pulse max.:\n", "-"*85 , "\n")
+print ("\n\n Calculation of velocity v, momentum p and kinetic energy by pulse min, mid and max :\n", "-"*85 , "\n")
 print("\n\n For cart 1:\n", "-"*15 , "\n")
 print(tabulate(data_table_calculations_cart1, headers="keys", tablefmt="grid"))
 
@@ -96,7 +96,7 @@ for item in data_table.items():
     momentum = round(MASS_CART_2 * velocity,3)
     kinetic_energy = round(0.5 * MASS_CART_2 * velocity**2,3)
 
-    key = item[0].replace("dt[s]","")
+    key = item[0].replace(" dt[s]","")
     data_table_calculations_cart2[key] = [velocity, momentum, kinetic_energy]
 
 print("\n\n For cart 2:\n", "-"*15 , "\n")
